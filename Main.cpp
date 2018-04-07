@@ -1,8 +1,22 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
-string Words[] = {}
+void ReadFile(){
+	ifstream file("dictionary.txt");
+	string textline;
+	vector<string> dic;
+	while(getline(file,textline)){
+		dic.push_back(textline);
+	}
+}
+
+void DrawHangman(int quessCount){
+	
+}
 
 void OnePlayer(){
 	int key;
@@ -12,18 +26,17 @@ void OnePlayer(){
 	cout << "3. C" << endl;
 	cout << "4. D" << endl;
 	cout << "5. Random" << endl;
-	cin << key;
-	switch(key){
-		case '1':
-			
-		case '2':
-			
-		case '3':
-			
-		case '4':
-			
-		case '5':
-			rand()%5+1;
+	cin >> key;
+	if(key == 1){
+		
+	}else if(key == 2){
+		
+	}else if(key == 3){
+		
+	}else if(key == 4){
+		
+	}else{
+		
 	}
 }
 
@@ -35,6 +48,10 @@ void Help(){
 	
 }
 
+void Exit(){
+	
+}
+
 void Menu(){
 	int key;
 	cout << "Press a number to select option." << endl;
@@ -43,26 +60,19 @@ void Menu(){
 	cout << "3 for Help/Info." << endl;
 	cout << "4 for Exit." << endl;
 	cin >> key;
-	switch(key){
-		case '1':
-			OnePlayer();
-			break;
-		case '2':
-			TwoPlayer();
-			break;
-		case '3':
-			Help();
-			break;
-		case '4':
-			exit = true;
-			break;
-		default:
-			cout << "Invalid Input.";
-			continue;
+	if(key == 1){
+		OnePlayer();
+	}else if(key == 2){
+		TwoPlayer();
+	}else if(key == 3){
+		Help();
+	}else{
+		Exit();
 	}
 }
 
 int main(){
-	bool exit = false;
+	srand(time(0));
+	ReadFile();
 	Menu();
 }
