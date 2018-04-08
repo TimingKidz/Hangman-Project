@@ -4,17 +4,21 @@
 #include <string>
 #include <time.h>
 #include <cstdlib>
+#include <iomanip>
+#include <windows.h>
 using namespace std;
 
+
 void PrintMessage(string message, bool printTop = true, bool printBottom = true){
+	
 	if(printTop){
-		cout << "+---------------------------------+" << endl;
-		cout << "|";
+		cout  << "+---------------------------------------------------------------+" << endl;
+		cout  << "|";
 	}else{
-		cout << "|";
+		cout  << "|";
 	}
 	bool front = true;
-	for(int i = message.length(); i < 33; i++){
+	for(int i = message.length(); i < 63; i++){
 		if (front){
 			message = " " + message;
 		}else{
@@ -25,11 +29,30 @@ void PrintMessage(string message, bool printTop = true, bool printBottom = true)
 	cout << message.c_str();
 
 	if(printBottom){
-		cout << "|" << endl;
-		cout << "+---------------------------------+" << endl;
+		cout <<  "|" << endl;
+		cout <<"+---------------------------------------------------------------+" << endl;
 	}else{
-		cout << "|" << endl;
+		cout <<"|" << endl;
 	}
+}
+
+void PrintLetters(string input, char from, char to){
+	string s;
+	for (char i = from; i <= to; i++)
+	{
+		if (input.find(i) == string::npos){
+			s += "  ";
+		}else{
+			s += i;
+			s += " ";
+		}	
+	}
+	PrintMessage(s, false);
+}
+
+void PrintAvailableLetters(string taken){
+	PrintMessage("Used Letter",false);
+	PrintLetters(taken, 'A', 'Z');
 }
 
 void DrawHangman(int guessCount = 0){
@@ -73,33 +96,15 @@ void DrawHangman(int guessCount = 0){
 		PrintMessage("", false, false);
 }
 
-void PrintLetters(string input, char from, char to){
-	string s;
-	for (char i = from; i <= to; i++)
-	{
-		if (input.find(i) == string::npos)
-		{
-			s += i;
-			s += " ";
-		}
-		else
-			s += "  ";
-	}
-	PrintMessage(s, false, false);
-}
 
-void PrintAvailableLetters(string taken){
-	PrintMessage("Available letters");
-	PrintLetters(taken, 'A', 'M');
-	PrintLetters(taken, 'N', 'Z');
-}
 
-bool PrintWordAndCheckWin(string word, string guessed){
+bool PrintWordAndCheckWin(string word, string guessed,int worduse){
 	bool won = true;
 	string s;
+	
 	for (int i = 0; i < word.length(); i++)
 	{
-		if (guessed.find(word[i]) == string::npos)
+		if (guessed.find(word[i]) == -1)
 		{
 			won = false;
 			s += "_ ";
@@ -108,6 +113,7 @@ bool PrintWordAndCheckWin(string word, string guessed){
 		{
 			s += word[i];
 			s += " ";
+			worduse ++;
 		}
 	}
 	PrintMessage(s, false);
@@ -121,7 +127,7 @@ string LoadRandomWord(string path){
 	ifstream reader(path.c_str());
 	if (reader.is_open())
 	{
-		while (std::getline(reader, word))
+		while (getline(reader, word))
 			v.push_back(word);
 
 		int randomLine = rand() % v.size();
@@ -136,50 +142,71 @@ int TriesLeft(string word, string guessed){
 	int error = 0;
 	for (int i = 0; i < guessed.length(); i++)
 	{
-		if (word.find(guessed[i]) == string::npos)
+		if (word.find(guessed[i]) == -1)
 			error++;
 	}
 	return error;
 }
 
+
 int main(){
 	srand(time(0));
-	string guesses;
 	string wordToGuess;
-	wordToGuess = LoadRandomWord("words.txt");
-	int tries = 0;
-	bool win = false;
-	do
-	{
-		system("cls"); //replace this line with system("clear"); if you run Linux or MacOS
-		PrintMessage("HANGMAN");
-		DrawHangman(tries);
-		PrintAvailableLetters(guesses);
-		PrintMessage("Guess the word");
-		win = PrintWordAndCheckWin(wordToGuess, guesses);
+	int worduse;
+	do{	
+	 	string key;
+		string guesses = "\0";
+		system("cls");
+		bool win = false;
+		wordToGuess = LoadRandomWord("words.txt");
+		int tries = 0;
+		cout << "Press a number to select option." << endl;
+		cout << "1 for One Player." << endl;
+		cout << "2 Exit." << endl;
+		getline(cin,key);
+		if(key == "1"){ 
+ 		 	//Player1
+			do{
+				system("cls"); 
+				PrintMessage("HANGMAN");
+				DrawHangman(tries);
+				PrintMessage("QQQQQQQQ");
+				win = PrintWordAndCheckWin(wordToGuess, guesses,worduse);
+				for(int i = 0; i < guesses.length(); i++){
+					guesses[i] = toupper(guesses[i]);
+				}
+				PrintAvailableLetters(guesses);
+				for(int i = 0; i < guesses.length(); i++){
+					guesses[i] = tolower(guesses[i]);
+				}
+			
+				if(win) break;
 
-		if (win)
+				string x;
+				cout << ">"; 
+				getline(cin,x);
+				if(guesses.find(x) == -1) guesses += x;
+				tries = TriesLeft(wordToGuess, guesses);
+			}while (tries < 10);
+		if(win){
+			PrintMessage("YOU WON!");
+			cout << "Press Enter to go back Menu";
+			getchar();
+		}else{
+			PrintMessage("GAME OVER");
+			cout << "Press Enter to go back Menu";
+			getchar();
+			}
+		}else if(key == "2"){
 			break;
+			system("pause");
+		}
+		//Player2
+	}while(true);
+	
+		} 
 
-		char x;
-		cout << ">"; cin >> x;
 
-		if (guesses.find(x) == string::npos)
-			guesses += x;
-
-		tries = TriesLeft(wordToGuess, guesses);
-
-	} while (tries < 10);
-
-	if (win)
-		PrintMessage("YOU WON!");
-	else
-		PrintMessage("GAME OVER");
-
-	system("pause"); //this line wont work on Linux or MacOS so remove it
-	getchar();
-	return 0;
-}
 /*
 +---------------------------------+
 |             HANG MAN            |
@@ -195,12 +222,13 @@ int main(){
 +---------------------------------+
 |        Available letters        |
 +---------------------------------+
-|     A B C D E F G H I J K L M   |
-|     N O P Q R S T U V W X Y Z   |
+|      |
 +---------------------------------+
-|         Guess the word          |
+|         
+Guess the word  
+        |
++-------------------------------
+| _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |--+
 +---------------------------------+
-| _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |
-+---------------------------------+
->
+>  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 */
