@@ -16,6 +16,27 @@ struct Player{
 	int score;
 };
 
+void PrintGameOver(){
+cout << ":::::::: :::::::: ::      :: ::::::  :::::::: ::     :: :::::: ::::::"<<"\n";
+cout << "::   ... ::    :: :::    ::: ::....  ::    ::  ::   ::  ::.... ::...:"<<"\n";
+cout << "::    :: :::::::: :: :  : :: ::      ::    ::   :: ::   ::     :::"<<"\n";
+cout << ":::::::: ::    :: ::  ::  :: ::::::  ::::::::    ::     :::::: :: ::"<<"\n";
+}
+
+void PrintWin(){
+	cout << "::     :     :: :::::::: :::   ::"<<"\n";
+	cout << " ::   : :   ::     ::    :: :  ::"<<"\n";
+	cout << "  :: :   : ::      ::    ::  : ::"<<"\n";
+	cout << "   ::	  ::    :::::::: ::   :::"<<"\n";
+}
+
+void PrintDraw(){
+	cout << "::::::::  :::::: :::::::: ::     :     ::"<<"\n";
+	cout << "::      : ::...: ::    ::  ::   : :   ::"<<"\n";
+	cout << "::      : :::    ::::::::   :: :   : ::"<<"\n";
+	cout << "::::::::  :: ::  ::    ::    ::	    ::"<<"\n";
+}
+
 void PrintMessage(string message, bool printTop = true, bool printBottom = true){
 	
 	if(printTop){
@@ -41,6 +62,10 @@ void PrintMessage(string message, bool printTop = true, bool printBottom = true)
 	}else{
 		cout <<"|" << endl;
 	}
+}
+
+void PrintEnter(){
+	cout  <<"\n\n\n\n";
 }
 
 void PrintLetters(string input, char from, char to){
@@ -196,13 +221,26 @@ int main(){
 				P.tries = TriesLeft(wordToGuess,P.guesses);
 			}while (P.tries < 10);
 		if(P.win){
-			PrintMessage("YOU WON!");
+			PrintEnter();
+			PrintWin();
+			Sleep( 1000 );
+			PrintEnter();
+			PrintMessage("THE WORD IS");
+			PrintMessage(wordToGuess,false);
+			PrintEnter();
 			cout << "Press Enter to go back Menu";
 			getchar();
 		}else{
-			PrintMessage("GAME OVER");
-			cout << "Press Enter to go back Menu";
-			getchar();
+			system("cls");
+				PrintEnter();
+				PrintGameOver();
+				Sleep( 1000 );
+				PrintEnter();
+				PrintMessage("THE WORD IS");
+				PrintMessage(wordToGuess,false);
+				PrintEnter();
+				cout << "Press Enter to go back Menu";
+				getchar();
 			}
 		}else if(key == "3"){
 			break;
