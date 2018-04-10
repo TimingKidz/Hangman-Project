@@ -10,13 +10,14 @@ using namespace std;
 
 
 struct Player{
-	bool win = false;
-	int tries = 0;
+	bool win;
+	bool turn;
+	int tries;
 	string guesses;
 	int score;
 };
 
-void PrintGameOver(){
+void PrintOver(){
 cout << ":::::::: :::::::: ::      :: ::::::  :::::::: ::     :: :::::: ::::::"<<"\n";
 cout << "::   ... ::    :: :::    ::: ::....  ::    ::  ::   ::  ::.... ::...:"<<"\n";
 cout << "::    :: :::::::: :: :  : :: ::      ::    ::   :: ::   ::     :::"<<"\n";
@@ -24,17 +25,25 @@ cout << ":::::::: ::    :: ::  ::  :: ::::::  ::::::::    ::     :::::: :: ::"<<
 }
 
 void PrintWin(){
-	cout << "::     :     :: :::::::: :::   ::"<<"\n";
-	cout << " ::   : :   ::     ::    :: :  ::"<<"\n";
-	cout << "  :: :   : ::      ::    ::  : ::"<<"\n";
-	cout << "   ::	  ::    :::::::: ::   :::"<<"\n";
+	cout << "              ::    :    :: :::::::: :::   ::"<<"\n";
+	cout << "               ::  : :  ::     ::    :: :  ::"<<"\n";
+	cout << "                :::   :::      ::    ::  : ::"<<"\n";
+	cout << "                 ::   ::    :::::::: ::   :::"<<"\n";
 }
 
 void PrintDraw(){
-	cout << "::::::::  :::::: :::::::: ::     :     ::"<<"\n";
-	cout << "::      : ::...: ::    ::  ::   : :   ::"<<"\n";
-	cout << "::      : :::    ::::::::   :: :   : ::"<<"\n";
-	cout << "::::::::  :: ::  ::    ::    ::	    ::"<<"\n";
+	cout << "              ::::::::  :::::: :::::::: ::    :    ::"<<"\n";
+	cout << "              ::      : ::...: ::    ::  ::  : :  ::"<<"\n";
+	cout << "              ::      : :::    ::::::::   :::  :::"<<"\n";
+	cout << "              ::::::::  :: ::  ::    ::    ::	::"<<"\n";
+}
+
+void PrintScore(int &score){
+	cout  << score<<"\n";
+}
+
+void PrintEnter(){
+	cout  <<"\n\n\n\n";
 }
 
 void PrintMessage(string message, bool printTop = true, bool printBottom = true){
@@ -62,10 +71,6 @@ void PrintMessage(string message, bool printTop = true, bool printBottom = true)
 	}else{
 		cout <<"|" << endl;
 	}
-}
-
-void PrintEnter(){
-	cout  <<"\n\n\n\n";
 }
 
 void PrintLetters(string input, char from, char to){
@@ -145,6 +150,7 @@ bool PrintWordAndCheckWin(string word, string guessed){
 		{
 			s += word[i];
 			s += " ";
+			
 		}
 	}
 	PrintMessage(s, false);
@@ -179,6 +185,16 @@ int TriesLeft(string word, string guessed){
 	return error;
 }
 
+int score(string word, string guessed){
+	int score = 0;
+	for (int i = 0; i < word.length(); i++)
+	{
+		if (guessed.find(word[i]) != -1)
+			score++;
+	}
+	return score;
+}
+
 
 int main(){
 	srand(time(0));
@@ -187,22 +203,33 @@ int main(){
 	do{	
 		Player P;
 	 	string key;
-		P.guesses = "\0";
 		system("cls");
-		//bool win = false;
+	    
+		
 		wordToGuess = LoadRandomWord("words.txt");
-		cout << "Press a number to select option." << endl;
-		cout << "1 for One Player." << endl;
-		cout << "2 for Two Player." << endl;
-		cout << "3 Exit." << endl;
+		PrintMessage("Press a number to select option.");
+		cout << "\n";	
+		cout << "                |    1 for One Player.   |" << endl;
+		cout << "                |    2 for Two Player.   |" << endl;
+		cout << "                |         3 Exit.        |" << endl;
+		cout << "\n";
+		cout <<"================================================================="<<"\n";
+		cout <<">";
+		        
 		getline(cin,key);
 		if(key == "1"){ 
- 		 	//One Player
+		    P.tries = 0;
+	 		P.win = false;
+			P.guesses = "\0";
+			P.score =0;
+ 		 	char t[100];//One Player
 			do{
 				system("cls"); 
 				PrintMessage("HANGMAN");
+				sprintf(t,"%d",P.score);
+				PrintMessage(t);
 				DrawHangman(P.tries);
-				PrintMessage("QQQQQQQQ");
+				PrintMessage("GUESS THE WORD");
 				P.win = PrintWordAndCheckWin(wordToGuess,P.guesses);
 				for(int i = 0; i < P.guesses.length(); i++){
 					P.guesses[i] = toupper(P.guesses[i]);
@@ -213,31 +240,33 @@ int main(){
 				}
 			
 				if(P.win) break;
+				//PrintMessage(wordToGuess);
 
 				string x;
 				cout << ">"; 
 				getline(cin,x);
 				if(P.guesses.find(x) == -1) P.guesses += x;
+				P.score=score(wordToGuess,P.guesses);
+				
 				P.tries = TriesLeft(wordToGuess,P.guesses);
 			}while (P.tries < 10);
-		if(P.win){
-			PrintEnter();
-			PrintWin();
-			Sleep( 1000 );
-			PrintEnter();
-			PrintMessage("THE WORD IS");
-			PrintMessage(wordToGuess,false);
-			PrintEnter();
-			cout << "Press Enter to go back Menu";
-			getchar();
-		}else{
-			system("cls");
+			if(P.win){
+				system("cls");
 				PrintEnter();
-				PrintGameOver();
-				Sleep( 1000 );
+				PrintWin();
 				PrintEnter();
 				PrintMessage("THE WORD IS");
-				PrintMessage(wordToGuess,false);
+				PrintMessage(wordToGuess);
+				PrintEnter();
+				cout << "Press Enter to go back Menu";
+				getchar();
+			}else{
+				system("cls");
+				PrintEnter();
+				PrintOver();
+				PrintEnter();
+				PrintMessage("THE WORD IS");
+				PrintMessage(wordToGuess);
 				PrintEnter();
 				cout << "Press Enter to go back Menu";
 				getchar();
@@ -247,38 +276,63 @@ int main(){
 			system("pause");
 		}else if(key == "2"){
 			Player P1,P2;
+			int P1turn = 0, P2turn = 0;
+			P1.tries = 0; P2.tries = 0;
+			P1.score = 0; P2.score = 0;
+			P1.win = false; P2.win = 0;
+			P1.guesses = "\0"; P2.guesses = "\0";
+			P1.turn = true; P2.turn = true; 
+			char t1[100];
+			char t2[100];
 			do{
-					system("cls"); 
+				do{
+					system("cls");
 					PrintMessage("HANGMAN");
+					sprintf(t1,"%d",P1.score);
+					PrintMessage(t1);
 					DrawHangman(P1.tries);
 					PrintMessage("1");
 					
 					P1.win = PrintWordAndCheckWin(wordToGuess,P1.guesses);
+					P1turn++;
+					if(P1turn%2==0){
+						P1.turn = false;
+						continue;	
+					}
 					for(int i = 0; i < P1.guesses.length(); i++){
-						P1.guesses[i] = toupper(P1.guesses[i]);
+					P1.guesses[i] = toupper(P1.guesses[i]);
 					}
 					PrintAvailableLetters(P1.guesses);
 					for(int i = 0; i < P1.guesses.length(); i++){
 						P1.guesses[i] = tolower(P1.guesses[i]);
 					}
-			
-					if(P1.win == true) break;
+			        if(P2.win == true) break;
 					
-
+					if(P1.tries >= 10) break;
+					
+					PrintMessage(wordToGuess);
 					string x;
 					cout << ">"; 
 					getline(cin,x);
 					
 					if(P1.guesses.find(x) == -1) P1.guesses += x;
+					P1.score=score(wordToGuess,P1.guesses);
 					P1.tries = TriesLeft(wordToGuess, P1.guesses);
-				
-					//P2
-				
+				}while(P1.tries < 10 && P1.turn == true && P1.win == false);
+					
+				do{
 					system("cls"); 
 					PrintMessage("HANGMAN");
+					sprintf(t2,"%d",P2.score);
+					PrintMessage(t2);
 					DrawHangman(P2.tries);
 					PrintMessage("2");
 					P2.win = PrintWordAndCheckWin(wordToGuess,P2.guesses);
+					P2turn++;
+					if(P2turn%2==0){
+						P2.turn = false;
+						continue;	
+					}
 					for(int i = 0; i < P2.guesses.length(); i++){
 						P2.guesses[i] = toupper(P2.guesses[i]);
 					}
@@ -286,58 +340,83 @@ int main(){
 					for(int i = 0; i < P2.guesses.length(); i++){
 						P2.guesses[i] = tolower(P2.guesses[i]);
 					}
-			
-					if(P2.win == true) break;
-
+			        if(P1.win == true) break;
+					
+					if(P2.tries >= 10) break;
+                    
 					string y;
 					cout << ">"; 
 					getline(cin,y);
 					if(P2.guesses.find(y) == -1) P2.guesses += y;
+					P2.score=score(wordToGuess,P2.guesses);
 					P2.tries = TriesLeft(wordToGuess, P2.guesses);
+				}while(P2.tries < 10 && P2.turn == true && P2.win == false);
 				
-			}while(P1.win == false || P2.win == false);
+				if(P1.tries >= 10 && P2.tries >= 10) break;
+				
+			}while(P1.win == false && P2.win == false);
 		
 		if(P1.win){
-			PrintMessage("Player 1 WON!");
-			cout << "Press Enter to go back Menu";
-			getchar();
+				system("cls");
+				PrintMessage("player 1");
+				PrintEnter();
+				PrintWin();
+				PrintEnter();
+				PrintMessage("THE WORD IS");
+				PrintMessage(wordToGuess,false);
+				PrintEnter();
+				cout << "Press Enter to go back Menu";
+				getchar();
 		}else if(P2.win){
-			PrintMessage("Player 2 WON!");
-			cout << "Press Enter to go back Menu";
-			getchar();
-		}else{
-			PrintMessage("GAME OVER");
-			cout << "Press Enter to go back Menu";
-			getchar();
-			}
+				system("cls");
+				PrintMessage("player 2");
+				PrintEnter();
+				PrintWin();
+				PrintEnter();
+				PrintMessage("THE WORD IS");
+				PrintMessage(wordToGuess,false);
+				PrintEnter();
+				cout << "Press Enter to go back Menu";
+				getchar();
+		}else if(P1.score > P2.score){
+				system("cls");
+				PrintMessage("player 2");
+				PrintEnter();
+				PrintWin();
+				PrintEnter();
+				PrintMessage("THE WORD IS");
+				PrintMessage(wordToGuess,false);
+				PrintEnter();
+				cout << "Press Enter to go back Menu";
+				getchar();
+		}else if(P1.score < P2.score){
+				
+				system("cls");
+				PrintMessage("player 1");
+				PrintEnter();
+				PrintWin();
+				PrintEnter();
+				PrintMessage("THE WORD IS");
+				PrintMessage(wordToGuess,false);
+				PrintEnter();
+				cout << "Press Enter to go back Menu";
+				getchar();
+			
+		}else if(P1.score == P2.score){
+				system("cls");
+				PrintEnter();
+				PrintDraw();
+				PrintEnter();
+				PrintMessage("THE WORD IS");
+				PrintMessage(wordToGuess);
+				PrintEnter();
+				cout << "Press Enter to go back Menu";
+				getchar();
+		}
 		}
 	}while(true);
 	
 		} 
 
 
-/*
-+---------------------------------+
-|             HANG MAN            |
-+---------------------------------+
-|               |                 |
-|               |                 |
-|               O                 |
-|              /|\                |
-|               |                 |
-|              / \                |
-|         +----------+            |
-|         |          |            |
-+---------------------------------+
-|        Available letters        |
-+---------------------------------+
-|      |
-+---------------------------------+
-|         
-Guess the word  
-        |
-+-------------------------------
-| _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |--+
-+---------------------------------+
->  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
-*/
+
