@@ -117,7 +117,7 @@ void DrawHangman(int guessCount = 0){
 
 
 
-bool PrintWordAndCheckWin(string word, string guessed){
+bool PrintWordAndCheckWin(string word, string guessed,int score){
 	bool won = true;
 	string s;
 	
@@ -132,6 +132,7 @@ bool PrintWordAndCheckWin(string word, string guessed){
 		{
 			s += word[i];
 			s += " ";
+		    score++;
 		}
 	}
 	PrintMessage(s, false);
@@ -176,9 +177,9 @@ int main(){
 	 	string key;
 	 	P.tries=0;
 	 	P.win=false;
+	 	P.score=0;
 		P.guesses = "\0";
 		system("cls");
-		//bool win = false;
 		wordToGuess = LoadRandomWord("words.txt");
 		cout << "Press a number to select option." << endl;
 		cout << "1 for One Player." << endl;
@@ -192,7 +193,7 @@ int main(){
 				PrintMessage("HANGMAN");
 				DrawHangman(P.tries);
 				PrintMessage("QQQQQQQQ");
-				P.win = PrintWordAndCheckWin(wordToGuess,P.guesses);
+				P.win = PrintWordAndCheckWin(wordToGuess,P.guesses,P.score);
 				for(int i = 0; i < P.guesses.length(); i++){
 					P.guesses[i] = toupper(P.guesses[i]);
 				}
@@ -242,7 +243,7 @@ int main(){
 					DrawHangman(P1.tries);
 					PrintMessage("1");
 					
-					P1.win = PrintWordAndCheckWin(wordToGuess,P1.guesses);
+					P1.win = PrintWordAndCheckWin(wordToGuess,P1.guesses,P1.score);
 					for(int i = 0; i < P1.guesses.length(); i++){
 						P1.guesses[i] = toupper(P1.guesses[i]);
 					}
@@ -267,7 +268,7 @@ int main(){
 					PrintMessage("HANGMAN");
 					DrawHangman(P2.tries);
 					PrintMessage("2");
-					P2.win = PrintWordAndCheckWin(wordToGuess,P2.guesses);
+					P2.win = PrintWordAndCheckWin(wordToGuess,P2.guesses,P2.score);
 					for(int i = 0; i < P2.guesses.length(); i++){
 						P2.guesses[i] = toupper(P2.guesses[i]);
 					}
