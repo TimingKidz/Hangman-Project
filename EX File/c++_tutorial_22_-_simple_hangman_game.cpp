@@ -8,6 +8,7 @@
 #include <windows.h>
 using namespace std;
 
+vector<string> v;
 
 struct Player{
 	bool win;
@@ -139,10 +140,11 @@ bool PrintWordAndCheckWin(string word, string guessed){
 	bool won = true;
 	string s;
 	
-	for (int i = 0; i < word.length(); i++)
-	{
+	for (int i = 0; i < word.length(); i++){
+		
 		if (guessed.find(word[i]) == -1)
 		{
+			
 			won = false;
 			s += "_ ";
 		}
@@ -160,12 +162,16 @@ bool PrintWordAndCheckWin(string word, string guessed){
 string LoadRandomWord(string path){
 	int lineCount = 0;
 	string word;
-	vector<string> v;
+	
 	ifstream reader(path.c_str());
 	if (reader.is_open())
 	{
-		while (getline(reader, word))
+		while (getline(reader, word)){
+			for(int i = 0; i < word.length(); i++){
+				word[i] = toupper(word[i]);
+			}
 			v.push_back(word);
+		}
 
 		int randomLine = rand() % v.size();
 
@@ -204,47 +210,73 @@ int main(){
 		Player P;
 	 	string key;
 		system("cls");
-	    
-		
-		wordToGuess = LoadRandomWord("words.txt");
+		 
 		PrintMessage("Press a number to select option.");
 		cout << "\n";	
 		cout << "                |    1 for One Player.   |" << endl;
 		cout << "                |    2 for Two Player.   |" << endl;
-		cout << "                |         3 Exit.        |" << endl;
+		cout << "                |    3 Exit.             |" << endl;
 		cout << "\n";
 		cout <<"================================================================="<<"\n";
 		cout <<">";
 		        
 		getline(cin,key);
+		
+		system("cls");
+		PrintMessage("Press a number to select category.");
+		cout << "\n";	
+		cout << "                |    1 Normal Words      |" << endl;
+		cout << "                |    2 Marvel            |" << endl;
+		cout << "                |    3 DC                |" << endl;
+		cout << "                |    4 BNK48             |" << endl;
+		cout << "                |    5 Brand             |" << endl;
+		cout << "\n";
+		cout <<"================================================================="<<"\n";
+		cout <<">";
+		
+		int select;
+		cin >> select;
+		if(select == 1) wordToGuess = LoadRandomWord("words.txt");
+		else if(select == 2) wordToGuess = LoadRandomWord("marvel.txt");
+		else if(select == 3) wordToGuess = LoadRandomWord("DC.txt");
+		else if(select == 4) wordToGuess = LoadRandomWord("BNK48.txt");
+		else if(select == 5)wordToGuess = LoadRandomWord("brand.txt");
+		else cout << "Invalid Input.";
+		
 		if(key == "1"){ 
 		    P.tries = 0;
 	 		P.win = false;
 			P.guesses = "\0";
 			P.score =0;
  		 	char t[100];//One Player
+ 		 	for (int i = 0; i < wordToGuess.length(); i++)
+			{
+				if(wordToGuess[i]==' ') P.guesses+=" ";
+			}
 			do{
-				system("cls"); 
+				
+				system("cls");
+			
 				PrintMessage("HANGMAN");
 				sprintf(t,"%d",P.score);
-				PrintMessage(t);
+				PrintMessage("Score",false);
+				PrintMessage(t,false);
 				DrawHangman(P.tries);
 				PrintMessage("GUESS THE WORD");
 				P.win = PrintWordAndCheckWin(wordToGuess,P.guesses);
-				for(int i = 0; i < P.guesses.length(); i++){
-					P.guesses[i] = toupper(P.guesses[i]);
-				}
+				
 				PrintAvailableLetters(P.guesses);
-				for(int i = 0; i < P.guesses.length(); i++){
-					P.guesses[i] = tolower(P.guesses[i]);
-				}
 			
 				if(P.win) break;
 				//PrintMessage(wordToGuess);
+				
 
 				string x;
 				cout << ">"; 
 				getline(cin,x);
+				for(int i = 0; i < x.length(); i++){
+					x[i] = toupper(x[i]);
+				}
 				if(P.guesses.find(x) == -1) P.guesses += x;
 				P.score=score(wordToGuess,P.guesses);
 				
@@ -281,7 +313,13 @@ int main(){
 			P1.score = 0; P2.score = 0;
 			P1.win = false; P2.win = 0;
 			P1.guesses = "\0"; P2.guesses = "\0";
-			P1.turn = true; P2.turn = true; 
+			P1.turn = true; P2.turn = true;
+			for (int i = 0; i < wordToGuess.length(); i++){
+				if(wordToGuess[i] == ' '){
+					P1.guesses += " ";
+					P2.guesses += " ";
+				}
+			}
 			char t1[100];
 			char t2[100];
 			do{
@@ -289,9 +327,11 @@ int main(){
 					system("cls");
 					PrintMessage("HANGMAN");
 					sprintf(t1,"%d",P1.score);
-					PrintMessage(t1);
+					PrintMessage("Score",false);
+					PrintMessage(t1,false);
 					DrawHangman(P1.tries);
 					PrintMessage("1");
+					
 					
 					P1.win = PrintWordAndCheckWin(wordToGuess,P1.guesses);
 					P1turn++;
@@ -299,32 +339,30 @@ int main(){
 						P1.turn = false;
 						continue;	
 					}
-					for(int i = 0; i < P1.guesses.length(); i++){
-					P1.guesses[i] = toupper(P1.guesses[i]);
-					}
 					PrintAvailableLetters(P1.guesses);
-					for(int i = 0; i < P1.guesses.length(); i++){
-						P1.guesses[i] = tolower(P1.guesses[i]);
-					}
 			        if(P2.win == true) break;
-					
+					if(P1.win == true) break;
 					if(P1.tries >= 10) break;
 					
 					PrintMessage(wordToGuess);
 					string x;
 					cout << ">"; 
 					getline(cin,x);
-					
+					for(int i = 0; i < x.length(); i++){
+						x[i] = toupper(x[i]);
+					}
 					if(P1.guesses.find(x) == -1) P1.guesses += x;
 					P1.score=score(wordToGuess,P1.guesses);
 					P1.tries = TriesLeft(wordToGuess, P1.guesses);
 				}while(P1.tries < 10 && P1.turn == true && P1.win == false);
 					
 				do{
+					
 					system("cls"); 
 					PrintMessage("HANGMAN");
 					sprintf(t2,"%d",P2.score);
-					PrintMessage(t2);
+					PrintMessage("Score",false);
+					PrintMessage(t2,false);
 					DrawHangman(P2.tries);
 					PrintMessage("2");
 					P2.win = PrintWordAndCheckWin(wordToGuess,P2.guesses);
@@ -333,20 +371,17 @@ int main(){
 						P2.turn = false;
 						continue;	
 					}
-					for(int i = 0; i < P2.guesses.length(); i++){
-						P2.guesses[i] = toupper(P2.guesses[i]);
-					}
 					PrintAvailableLetters(P2.guesses);
-					for(int i = 0; i < P2.guesses.length(); i++){
-						P2.guesses[i] = tolower(P2.guesses[i]);
-					}
 			        if(P1.win == true) break;
-					
+					if(P2.win == true) break;
 					if(P2.tries >= 10) break;
                     
 					string y;
 					cout << ">"; 
 					getline(cin,y);
+					for(int i = 0; i < y.length(); i++){
+						y[i] = toupper(y[i]);
+					}
 					if(P2.guesses.find(y) == -1) P2.guesses += y;
 					P2.score=score(wordToGuess,P2.guesses);
 					P2.tries = TriesLeft(wordToGuess, P2.guesses);
