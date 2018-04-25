@@ -1,147 +1,214 @@
-Iron Man
-Captain America
-Hawkeye
-Black Widow
-Hulk
-Natasha
-Thor
-Vision
-Scarlet Witch
-War Machine
-Falcon
-Nick Fury
-Maria Hill
-Happy Hogan
-Pepper Potts
-Star Lord
-Gamora
-Mantis
-Nebula
-Drax
-Groot
-Rocket
-Stephen Strange
-Wong
-Black Panther
-Ant-Man
-Hank Pym
-The Wasp
-Spider Man
-Peter Parker
-Winter Soldier
-Valkyrie
-Captain Marvel
-Jessica Jones
-Quake
-Punisher
-Peggy Carter
-Yondu Udonta
-Howard Stark
-Elektra
-Odin
-Sif
-Daredevil
-Ghost Rider
-Heimdall
-Jane Foster
-Shuri
-Jemma Simmons
-Absorbing Man
-Flint
-Quicksilver
-Iron Fist
-Melinda May
-Luke Cage
-Everett Ross
-Okoye
-Sharon Carter
-Alphonso Mackenzie
-Karl Mordo
-Maria Hill
-Karen Page
-Bobbi Morse
-Nakia
-Enoch
-Ancient One
-Deathlok
-Stick
-Claire Temple
-Korg
-Patriot
-Frigga
-Lincoln Campbell
-Fandral
-Kraglin Obfonteri
-Hope van Dyne
-Edwin Jarvis
-Wong
-Colleen Wing
-Micro
-Lash
-Executioner
-Volstagg
-Antoine Triplett
-Karolina Dean
-Lance Hunter
-Hogun
-Janet van Dyne
-Dum Dum Dugan
-Misty Knight
-Miek
-Nico Minoru
-Chester Phillips
-Alex Wilder
-Tyr
-Black Bolt
-Cloak
-Dagger
-Medusa
-Squirrel Girl
-Mister Immortal
-Thanos
-Ruby
-Hela
-Erik Killmonger
-Ego
-Cull Obsidian
-Ronan
-Corvus Glaive
-Red Skull
-Ultron
-The Other
-Leo Fitz
-Wolfgang von Strucker
-Helmut Zemo
-Surtur
-Grandmaster
-Madame Gao
-Ulysses Klaue
-Aida
-Crossbones
-Billy Russo
-Dormammu
 Abomination
-Ayesha
-Arnim Zola
-Kingpin
-Vulture
-Malekith
-Kaecilius
+Absorbing man
+Abyss
+Amadeus cho
+Ant man
+Ares
+Arkon
+Attuma
+Baron struckker
+Baron von blitzschlag
+Baron zemo
+Batroc
+Beyonder
+Big bertha
+Black bolt
+Black knight
+Black panther
+Black widow
+Blackout
+Blade
+Bloodwraith
+Blue marvel
+Bullseye
+Captain america
+Captain britain
+Captain marvel
+Captain universe
+Collector
+Count nefaria
+Crimson dynamo
+Crossbones
+Crystal
+Daredevil
+Deathlok
+Demolition man
+Diamondback
+Dinah soar
+Doctor druid
+Doctor strange
+Doctor voodoo
+Doorman
+Dormammu
+Drax
+Dum Dum Dugan
+Echo
+Egghead
+Electro
+Elektro
+Enchantress
+Ex nihilo
+Executioner
+Falcon
+Finesse
+Firebird
+Flatman
+Gamora
+Gauntlet
+Gilgamesh
+Grandmaster
+Graviton
+Gravity
+Grey Gargoyle
+Grim reaper
+Groot
+Hank pym
+Hardball
+Hawkeye
+Hazmat
+Hellcat
+Hercules
+High Evolutionary
+Hood
+Hulk
+Huiking
+Hybra
+Hyperion
+Immortus
+Iron fist
+Iron lad
+Iron man
+Iron Patriot
+Jack of hearts
+Jarvis
+Jessica Jones
+Jocasta
+Justice
+Kang
+Klaw
+Komodo
+Korvac
+Lionheart
+Living laser
+Living lightning
+Lockjaw
+Loki
+Luke cage
+Machine man
+Madame hydra
+Madame masque
 Mandarin
-Laufey
-Whiplash
-Iron Monger
-Destroyer
-Yellowjacket
-Taserface
+Manifold
+Mantis
+Maria hill
+Marrina
+Martinex
+Marvel boy
+Master pandemonium
 Maximus
-Taskmaster
+Medusa
+Melter
+Mettle
+Miss america
+Mister Hyde
+Mister immortal
+Mockingbird
+Monica chang
+Moon knight
+Moondragon
+Morgan le fay
+Ms marvel
+MVP
+Nebula
+Nick Fury
+Nightmask
+Nikki
+Norman osborn
+Nova
+Pagan
+Phillip coulson
+Phobos
+Power man
+Proctor
+Psyklop
+Purple man
+Quake
+Quasar
+Quicksilver
+Radioactive man
+Rage
+Ravona renslayer
+Red guardian
+Red hulk
+Red skull
+Red wolf
+Reptil
+Rick jones
+Rocket raccoon
+Ronan
+Sandman
+Scarlet witch
+Scorpio
+Sentry
+Serpent
+Sersi
+Shanna
+Sharon carter
+Shocker
+Silverclaw
 Sin
-Ulik
-Beetle
-
-
-
-
-
+Skaar
+Slingshort
+Songbird
+Space Phantom
+spectrum
+Speed
+Spider man
+Spider woman
+Squirrel girl
+Star brand
+Starfox
+Starhawk
+Star Lord
+Stature
+Stingray
+Stranger
+Striker
+Sub mariner
+Super adaptoid
+Supreme intelligence
+Swordsman
+Taskmaster
+Thanos
+Thor
+Thor girl
+Thunderstrike
+Thundra
+Tiger shark
+Tigra
+Titania
+Titanium man
+Trauma
+Trickshot
+Ultra girl
+Ultron
+Valkyrie
+Vance Astro
+Veil
+Venom
+Veranke
+Victor mancha
+Victoria hand
+Vision
+Warlock
+Wasp
+White tiger
+Whizzer
+Wiccan
+Winter soldier
+Wonder man
+Wrecking crew
+Yellowjacket
+Yondu
+Ack
 
