@@ -1,0 +1,166 @@
+Leopard
+Deer
+Eagle
+Fennec Fox
+Sable Antelope
+Lion
+Kangaroo
+Horse
+Blue Marlin
+Flamingo
+Tiger
+European 
+Humpback Whale
+Zebra
+Jaguar
+Beaver
+Giant Panda
+Andean Condor
+Okapi
+African Elephant
+Dalmatian
+Cypriot Mouflon
+Crocodile
+Arabian Camel
+Brown Bear
+Gallic Rooster
+Polar Bear
+Dolphin
+Jaguar
+Komodo Dragon
+Gazelle
+Wolf
+Indian Elephant
+Black 
+gibbon
+Hyena
+Lynx
+Lemur
+Tuna
+Dodo
+Aurochs
+Falcon
+African Elephant
+Oryx
+Kiwi
+Elk
+Markhor
+Pampas fox
+Monkey
+Bull
+Giraffe
+Gray Wolf
+Bald Eagle
+SALAMANDER
+FROG
+TURTLE
+ant
+bee
+alligator 
+chimpanzee
+gorilla
+hippopotamus
+koala
+ostrich
+penguin
+shark
+dog
+cat
+mouse
+rat
+cock
+hen
+chicken
+duck
+goose
+bird
+bat
+rabbit
+pupkitty
+pig
+piggy
+goat
+sheep
+cheetah
+donkey
+buffalo
+ox
+rhinoceros
+snake
+cobra
+king cobra
+white ants
+mosquito
+scorpion
+centipede
+millipede
+hornet 
+wasp
+spider
+grasshopper
+mantis
+earthworms
+toad
+butterfly
+lizard
+house lizard
+gecko
+cockroach
+dragonfly
+housefly
+fruit fly
+worm
+maggot
+Crab 
+Lobster
+King crab
+Crayfish 	
+Shrimp
+Prawn
+Crawfish
+Cockle 
+Oyster
+Pearl oyster
+Periwinkle
+Conch Snai
+Sea mussel
+Abalone
+Clam
+Scallop
+Nautilus	
+Slug
+Leech
+Jelly fish
+Seal
+Sea lion
+Otter
+Fighting fish
+Catfish
+Bass
+Cuttle fish
+Eel 
+Electric eel
+Conger
+Goldfish
+Mackerel
+Blowfish
+Puffer
+Squid
+Octopus
+Ray 	
+Sardine
+Star fish
+Tiger shark
+
+
+
+
+
+
+
+
+
+
+
+
+

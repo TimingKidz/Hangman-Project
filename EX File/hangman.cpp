@@ -240,6 +240,11 @@ int main(){
 		cout << "                |    3 DC                |" << endl;
 		cout << "                |    4 BNK48             |" << endl;
 		cout << "                |    5 Brand             |" << endl;
+		cout << "                |    6 Games             |" << endl;
+		cout << "                |    7 Artist            |" << endl;
+		cout << "                |    8 Famous People     |" << endl;
+		cout << "                |    9 Countries         |" << endl;
+		cout << "                |    10 Animal           |" << endl;
 		cout << "\n";
 		cout <<"================================================================="<<"\n";
 		cout <<">";
@@ -247,7 +252,7 @@ int main(){
 		
 		getline(cin,select);
 		
-		}while(select!="1" and select!="2" and select!="3" and select!="4" and select!="5");
+		}while(select!="1" and select!="2" and select!="3" and select!="4" and select!="5" and select != "6" and select != "7" and select != "8" and select != "9" and select != "10");
 		
 		if(select == "1") {
 			wordToGuess = LoadRandomWord("words.txt");
@@ -262,14 +267,28 @@ int main(){
 			mode="DC";
 		}
 		else if(select == "4"){
-				wordToGuess = LoadRandomWord("BNK48.txt");
-				mode="BNK48";
+			wordToGuess = LoadRandomWord("BNK48.txt");
+			mode="BNK48";
 		} 
 		else if(select == "5"){
 			wordToGuess = LoadRandomWord("brand.txt");
 			mode="Brand";
-		}
-		else cout << "Invalid Input.";
+		}else if(select == "6"){
+			wordToGuess = LoadRandomWord("Games.txt");
+			mode= "Games";
+		}else if(select == "7"){
+			wordToGuess = LoadRandomWord("Artist.txt");
+			mode="Artist";
+		}else if(select == "8"){
+			wordToGuess = LoadRandomWord("Famous People.txt");
+			mode="Famous People";
+		}else if(select == "9"){
+			wordToGuess = LoadRandomWord("Countries.txt");
+			mode="Countries";
+		}else if(select == "10"){
+			wordToGuess = LoadRandomWord("Animal.txt");
+			mode="Animal";
+		}else cout << "Invalid Input.";
 		
 		if(key == "1"){ 
 		    P.tries = 0;
