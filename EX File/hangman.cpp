@@ -209,8 +209,9 @@ int main(){
 	do{	
 		v.clear();
 		Player P;
-	 	string key;
-		string select;
+	 	string key="\0";
+		string select="\0";
+		string mode="\0";
 	 	do{
 		 
 		system("cls");
@@ -248,11 +249,26 @@ int main(){
 		
 		}while(select!="1" and select!="2" and select!="3" and select!="4" and select!="5");
 		
-		if(select == "1") wordToGuess = LoadRandomWord("words.txt");
-		else if(select == "2") wordToGuess = LoadRandomWord("marvel.txt");
-		else if(select == "3") wordToGuess = LoadRandomWord("DC.txt");
-		else if(select == "4") wordToGuess = LoadRandomWord("BNK48.txt");
-		else if(select == "5")wordToGuess = LoadRandomWord("brand.txt");
+		if(select == "1") {
+			wordToGuess = LoadRandomWord("words.txt");
+			mode="Normal words";
+		}
+		else if(select == "2"){
+			wordToGuess = LoadRandomWord("marvel.txt");
+			mode="Marvel";
+		} 
+		else if(select == "3"){
+			wordToGuess = LoadRandomWord("DC.txt");
+			mode="DC";
+		}
+		else if(select == "4"){
+				wordToGuess = LoadRandomWord("BNK48.txt");
+				mode="BNK48";
+		} 
+		else if(select == "5"){
+			wordToGuess = LoadRandomWord("brand.txt");
+			mode="Brand";
+		}
 		else cout << "Invalid Input.";
 		
 		if(key == "1"){ 
@@ -264,14 +280,18 @@ int main(){
  		 	int space=0;
  		 	for (int i = 0; i < wordToGuess.length(); i++)
 			{
-				if(wordToGuess[i]==' ') P.guesses+=" ";
-				space++;
+				if(wordToGuess[i]==' '){
+					P.guesses+=" ";
+					space++;
+				} 
+				
 				
 			}
 			do{
 				
 				system("cls");
-			
+			    
+			    PrintMessage(mode,false,false);
 				PrintMessage("HANGMAN");
 				sprintf(t,"%d",P.score);
 				PrintMessage("Score",false);
@@ -342,6 +362,7 @@ int main(){
 			do{
 				do{
 					system("cls");
+					PrintMessage(mode,false,false);
 					PrintMessage("HANGMAN");
 					sprintf(t1,"%d",P1.score);
 					PrintMessage("Score",false);
@@ -376,6 +397,7 @@ int main(){
 				do{
 					
 					system("cls"); 
+					PrintMessage(mode,false,false);
 					PrintMessage("HANGMAN");
 					sprintf(t2,"%d",P2.score);
 					PrintMessage("Score",false);
