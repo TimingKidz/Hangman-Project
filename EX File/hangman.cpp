@@ -6,7 +6,13 @@
 #include <cstdlib>
 #include <iomanip>
 #include <windows.h>
+#include <conio.h>
 using namespace std;
+
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
 
 vector<string> v;
 
@@ -18,28 +24,60 @@ struct Player{
 	int score;
 };
 
-void PrintOver(){
-cout << ":::::::: :::::::: ::      :: ::::::  :::::::: ::     :: :::::: ::::::"<<"\n";
-cout << "::   ... ::    :: :::    ::: ::....  ::    ::  ::   ::  ::.... ::...:"<<"\n";
-cout << "::    :: :::::::: :: :  : :: ::      ::    ::   :: ::   ::     :::"<<"\n";
-cout << ":::::::: ::    :: ::  ::  :: ::::::  ::::::::    ::     :::::: :: ::"<<"\n";
+void gotoxy(int x, int y){
+ 	COORD coord;
+ 	coord.X = x;
+ 	coord.Y = y;
+ 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-void PrintWin(){
-	cout << "              ::    :    :: :::::::: :::   ::"<<"\n";
-	cout << "               ::  : :  ::     ::    :: :  ::"<<"\n";
-	cout << "                :::   :::      ::    ::  : ::"<<"\n";
-	cout << "                 ::   ::    :::::::: ::   :::"<<"\n";
+void MaximizeWindow(void){
+    HWND consoleWindow = GetConsoleWindow(); // This gets the value Windows uses to identify your output window 
+    ShowWindow(consoleWindow, SW_MAXIMIZE); // this mimics clicking on its' maximize button
 }
 
-void PrintDraw(){
-	cout << "              ::::::::  :::::: :::::::: ::    :    ::"<<"\n";
-	cout << "              ::      : ::...: ::    ::  ::  : :  ::"<<"\n";
-	cout << "              ::      : :::    ::::::::   :::  :::"<<"\n";
-	cout << "              ::::::::  :: ::  ::    ::    ::	::"<<"\n";
+void Color(int i=15){ // set color
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+   	SetConsoleTextAttribute(hConsole,i);
 }
 
-void PrintScore(int &score){
+void Logo(){
+	cout << endl;
+	Color(15);cout << "\t\t\t\t\t";Color(153);cout << "::::::::::";Color(15);cout << "  ";Color(221);cout << "::::::";Color(15);cout << "  ";Color(187);cout << "::::::";Color(15);cout << " ";Color(238);cout << "::";Color(15);cout << "  ";Color(238);cout << "::::";Color(15);cout << " ";Color(170);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << " ";Color(204);cout << "::";Color(15);cout << "      ";Color(204);cout << "::";Color(15);cout << "\n";
+	Color(15);cout << "\t\t\t\t\t    ";Color(153);cout << "::";Color(15);cout << "     ";Color(221);cout << "::";Color(15);cout << "    ";Color(221);cout << "::";Color(15);cout << "   ";Color(187);cout << "::";Color(15);cout << "   ";Color(238);cout << "::";Color(15);cout << " ";Color(238);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << " ";Color(204);cout << ":::";Color(15);cout << "    ";Color(204);cout << ":::";Color(15);cout << "\n";
+	Color(15);cout << "\t\t\t\t\t    ";Color(153);cout << "::";Color(15);cout << "     ";Color(221);cout << "::::::::";Color(15);cout << "   ";Color(187);cout << "::";Color(15);cout << "   ";Color(238);cout << "::::";Color(15);cout << "     ";Color(170);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << " ";Color(204);cout << "::";Color(15);cout << " ";Color(204);cout << ":";Color(15);cout << "  ";Color(204);cout << ":";Color(15);cout << " ";Color(204);cout << "::";Color(15);cout << "\n";
+	Color(15);cout << "\t\t\t\t\t    ";Color(153);cout << "::";Color(15);cout << "     ";Color(221);cout << "::";Color(15);cout << "    ";Color(221);cout << "::";Color(15);cout << "   ";Color(187);cout << "::";Color(15);cout << "   ";Color(238);cout << "::";Color(15);cout << " ";Color(238);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << " ";Color(204);cout << "::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "\n";
+	Color(15);cout << "\t\t\t\t\t    ";Color(153);cout << "::";Color(15);cout << "     ";Color(221);cout << "::";Color(15);cout << "    ";Color(221);cout << "::";Color(15);cout << " ";Color(187);cout << "::::::";Color(15);cout << " ";Color(238);cout << "::";Color(15);cout << "  ";Color(238);cout << "::::";Color(15);cout << "  ";Color(170);cout << "::::::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "\n\n";
+}
+
+void PrintOver(){ // print if you lose
+	Color(4);
+	cout << "\t\t\t\t  :::::::: :::::::: ::      :: ::::::  :::::::: ::    :: :::::: ::::::"<<"\n";
+	cout << "\t\t\t\t  ::   ... ::    :: :::    ::: ::....  ::    ::  ::  ::  ::.... ::...:"<<"\n";
+	Color(12);
+	cout << "\t\t\t\t  ::    :: :::::::: :: :  : :: ::      ::    ::   ::::   ::     ::::  "<<"\n";
+	cout << "\t\t\t\t  :::::::: ::    :: ::  ::  :: ::::::  ::::::::    ::    :::::: :: :::"<<"\n";
+	}
+
+void PrintWin(){ // print if you win
+	Color(3);
+	cout << "\t\t\t\t\t            ::   :   :: :::::::: :::   ::"<<"\n";
+	cout << "\t\t\t\t\t            ::  : :  ::    ::    :: :  ::"<<"\n";
+	Color(11);
+	cout << "\t\t\t\t\t             :::   :::     ::    ::  : ::"<<"\n";
+	cout << "\t\t\t\t\t              ::   ::   :::::::: ::   :::"<<"\n";
+}
+
+void PrintDraw(){ // print if your friend and you draw
+	Color(8);
+	cout << "\t\t\t\t\t        ::::::::  :::::: :::::::: ::   :   ::"<<"\n";
+	cout << "\t\t\t\t\t        ::      : ::...: ::    :: ::  : :  ::"<<"\n";
+	Color(15);
+	cout << "\t\t\t\t\t        ::      : ::::   ::::::::  :::   ::: "<<"\n";
+	cout << "\t\t\t\t\t        ::::::::  :: ::: ::    ::   ::	 ::  "<<"\n";
+}
+
+void PrintScore(int &score){ // function print score
 	cout  << score<<"\n";
 }
 
@@ -47,14 +85,17 @@ void PrintEnter(){
 	cout  <<"\n\n\n\n";
 }
 
-void PrintMessage(string message, bool printTop = true, bool printBottom = true){
+void PrintMessage(string message, bool printTop = true, bool printBottom = true,int Col=15){
 	
 	if(printTop){
-		cout  << "+---------------------------------------------------------------+" << endl;
-		cout  << "|";
+		Color(14);
+		cout  << "\t\t\t\t   +---------------------------------------------------------------+" << endl;
+		cout  << "\t\t\t\t   |";
 	}else{
-		cout  << "|";
+		Color(14);
+		cout  << "\t\t\t\t   |";
 	}
+	Color(Col);
 	bool front = true;
 	for(int i = message.length(); i < 63; i++){
 		if (front){
@@ -65,11 +106,12 @@ void PrintMessage(string message, bool printTop = true, bool printBottom = true)
 		front = !front;
 	}
 	cout << message.c_str();
-
 	if(printBottom){
+		Color(14);
 		cout <<  "|" << endl;
-		cout <<"+---------------------------------------------------------------+" << endl;
+		cout <<"\t\t\t\t   +---------------------------------------------------------------+" << endl;
 	}else{
+		Color(14);
 		cout <<"|" << endl;
 	}
 }
@@ -139,23 +181,23 @@ void DrawHangman(int guessCount = 0){
 bool PrintWordAndCheckWin(string word, string guessed){
 	bool won = true;
 	string s;
-	
 	for (int i = 0; i < word.length(); i++){
 		
 		if (guessed.find(word[i]) == -1)
 		{
-			
+			Color(15);
 			won = false;
 			s += "_ ";
 		}
 		else
 		{
+			Color(15);
 			s += word[i];
 			s += " ";
 			
 		}
 	}
-	PrintMessage(s, false);
+	PrintMessage(s, false,true,8);
 	return won;
 }
 
@@ -203,6 +245,7 @@ int score(string word, string guessed){
 
 
 int main(){
+	MaximizeWindow();
 	srand(time(0));
 	string wordToGuess;
 	int worduse;
@@ -215,15 +258,22 @@ int main(){
 	 	do{
 		 
 		system("cls");
-		 
+		Logo();
+		int c = 0;
 		PrintMessage("Press a number to select option.");
 		cout << "\n";	
-		cout << "                |    1 for One Player.   |" << endl;
-		cout << "                |    2 for Two Player.   |" << endl;
-		cout << "                |    3 Exit.             |" << endl;
+		cout << "\t\t\t\t\t\t       |    1 for One Player.   |" << endl;
+		cout << "\t\t\t\t\t\t       |    2 for Two Player.   |" << endl;
+		cout << "\t\t\t\t\t\t       |    3 Exit.             |" << endl;
 		cout << "\n";
-		cout <<"================================================================="<<"\n";
-		cout <<">";
+		cout << "\t\t\t\t   ================================================================="<<"\n";
+		Color(12);
+		cout << "\n\t\t\t\t\t\t\t  >> ";
+		Color(8);
+		cout << "Enter a number";
+		Color(12);
+		cout << " <<\n\t\t\t\t\t\t\t\t   ";
+		Color(15);
 		        
 		getline(cin,key);
 		
@@ -233,26 +283,28 @@ int main(){
 		do{
 		
 		system("cls");
+		Logo();
 		PrintMessage("Press a number to select category.");
 		cout << "\n";	
-		cout << "                |    1 Normal Words      |" << endl;
-		cout << "                |    2 Marvel            |" << endl;
-		cout << "                |    3 DC                |" << endl;
-		cout << "                |    4 BNK48             |" << endl;
-		cout << "                |    5 Brand             |" << endl;
-		cout << "                |    6 Games             |" << endl;
-		cout << "                |    7 Artist            |" << endl;
-		cout << "                |    8 Famous People     |" << endl;
-		cout << "                |    9 Countries         |" << endl;
-		cout << "                |    10 Animal           |" << endl;
+		cout << "\t\t\t\t\t\t       |    1 Normal Words      |" << endl;
+		cout << "\t\t\t\t\t\t       |    2 Marvel            |" << endl;
+		cout << "\t\t\t\t\t\t       |    3 DC                |" << endl;
+		cout << "\t\t\t\t\t\t       |    4 BNK48             |" << endl;
+		cout << "\t\t\t\t\t\t       |    5 Brand             |" << endl;
 		cout << "\n";
-		cout <<"================================================================="<<"\n";
-		cout <<">";
+		cout <<"\t\t\t\t   ================================================================="<<"\n";
+		Color(12);
+		cout << "\n\t\t\t\t\t\t\t  >> ";
+		Color(8);
+		cout << "Enter a number";
+		Color(12);
+		cout << " <<\n\t\t\t\t\t\t\t\t   ";
+		Color(15);
 		
 		
 		getline(cin,select);
 		
-		}while(select!="1" and select!="2" and select!="3" and select!="4" and select!="5" and select != "6" and select != "7" and select != "8" and select != "9" and select != "10");
+		}while(select!="1" and select!="2" and select!="3" and select!="4" and select!="5");
 		
 		if(select == "1") {
 			wordToGuess = LoadRandomWord("words.txt");
@@ -267,28 +319,14 @@ int main(){
 			mode="DC";
 		}
 		else if(select == "4"){
-			wordToGuess = LoadRandomWord("BNK48.txt");
-			mode="BNK48";
+				wordToGuess = LoadRandomWord("BNK48.txt");
+				mode="BNK48";
 		} 
 		else if(select == "5"){
 			wordToGuess = LoadRandomWord("brand.txt");
 			mode="Brand";
-		}else if(select == "6"){
-			wordToGuess = LoadRandomWord("Games.txt");
-			mode= "Games";
-		}else if(select == "7"){
-			wordToGuess = LoadRandomWord("Artist.txt");
-			mode="Artist";
-		}else if(select == "8"){
-			wordToGuess = LoadRandomWord("Famous People.txt");
-			mode="Famous People";
-		}else if(select == "9"){
-			wordToGuess = LoadRandomWord("Countries.txt");
-			mode="Countries";
-		}else if(select == "10"){
-			wordToGuess = LoadRandomWord("Animal.txt");
-			mode="Animal";
-		}else cout << "Invalid Input.";
+		}
+		else cout << "Invalid Input.";
 		
 		if(key == "1"){ 
 		    P.tries = 0;
@@ -309,11 +347,10 @@ int main(){
 			do{
 				
 				system("cls");
-			    
-			    PrintMessage(mode,false,false);
-				PrintMessage("HANGMAN");
+			    Logo();
+			    PrintMessage(mode,true,false);
 				sprintf(t,"%d",P.score);
-				PrintMessage("Score",false);
+				PrintMessage("Score",true,false);
 				PrintMessage(t,false);
 				DrawHangman(P.tries);
 				PrintMessage("GUESS THE WORD");
@@ -322,11 +359,17 @@ int main(){
 				PrintAvailableLetters(P.guesses);
 			
 				if(P.win) break;
-				//PrintMessage(wordToGuess);
+				//PrintMessage(wordToGuess); baikum
 				
 
 				string x;
-				cout << ">"; 
+				Color(12);
+				cout << "\n\t\t\t\t\t\t      >> ";
+				Color(8);
+				cout << "Enter alphabet or word";
+				Color(12);
+				cout << " <<\n\t\t\t\t\t\t\t\t   ";
+				Color(15);
 				getline(cin,x);
 				for(int i = 0; i < x.length(); i++){
 					x[i] = toupper(x[i]);
@@ -341,20 +384,20 @@ int main(){
 				PrintEnter();
 				PrintWin();
 				PrintEnter();
-				PrintMessage("THE WORD IS");
-				PrintMessage(wordToGuess);
+				PrintMessage("THE WORD IS",true,true,7);
+				PrintMessage(wordToGuess,false,true,15);
 				PrintEnter();
-				cout << "Press Enter to go back Menu";
+				cout << "\t\t\t\t\t\t      Press Enter to go back Menu";
 				getchar();
 			}else{
 				system("cls");
 				PrintEnter();
 				PrintOver();
 				PrintEnter();
-				PrintMessage("THE WORD IS");
-				PrintMessage(wordToGuess);
+				PrintMessage("THE WORD IS",true,true,7);
+				PrintMessage(wordToGuess,false,true,15);
 				PrintEnter();
-				cout << "Press Enter to go back Menu";
+				cout << "\t\t\t\t\t\t      Press Enter to go back Menu";
 				getchar();
 			}
 		}else if(key == "3"){
@@ -381,10 +424,10 @@ int main(){
 			do{
 				do{
 					system("cls");
-					PrintMessage(mode,false,false);
-					PrintMessage("HANGMAN");
+					Logo();
+					PrintMessage(mode,true,false);
 					sprintf(t1,"%d",P1.score);
-					PrintMessage("Score",false);
+					PrintMessage("Score",true,false);
 					PrintMessage(t1,false);
 					DrawHangman(P1.tries);
 					PrintMessage("1");
@@ -401,9 +444,15 @@ int main(){
 					if(P1.win == true) break;
 					if(P1.tries >= 10) break;
 					
-					//PrintMessage(wordToGuess);
+					//PrintMessage(wordToGuess); baikum
 					string x;
-					cout << ">"; 
+					Color(12);
+					cout << "\n\t\t\t\t\t\t      >> ";
+					Color(8);
+					cout << "Enter alphabet or word";
+					Color(12);
+					cout << " <<\n\t\t\t\t\t\t\t\t   ";
+					Color(15);
 					getline(cin,x);
 					for(int i = 0; i < x.length(); i++){
 						x[i] = toupper(x[i]);
@@ -416,6 +465,7 @@ int main(){
 				do{
 					
 					system("cls"); 
+					Logo();
 					PrintMessage(mode,false,false);
 					PrintMessage("HANGMAN");
 					sprintf(t2,"%d",P2.score);
@@ -435,7 +485,13 @@ int main(){
 					if(P2.tries >= 10) break;
                     
 					string y;
-					cout << ">"; 
+					Color(12);
+					cout << "\n\t\t\t\t\t\t      >> ";
+					Color(8);
+					cout << "Enter alphabet or word";
+					Color(12);
+					cout << " <<\n\t\t\t\t\t\t\t\t   ";
+					Color(15);
 					getline(cin,y);
 					for(int i = 0; i < y.length(); i++){
 						y[i] = toupper(y[i]);
@@ -455,10 +511,10 @@ int main(){
 				PrintEnter();
 				PrintWin();
 				PrintEnter();
-				PrintMessage("THE WORD IS");
-				PrintMessage(wordToGuess,false);
+				PrintMessage("THE WORD IS",true,true,7);
+				PrintMessage(wordToGuess,false,true,15);
 				PrintEnter();
-				cout << "Press Enter to go back Menu";
+				cout << "\t\t\t\t\t\t      Press Enter to go back Menu";
 				getchar();
 		}else if(P2.win){
 				system("cls");
@@ -466,10 +522,10 @@ int main(){
 				PrintEnter();
 				PrintWin();
 				PrintEnter();
-				PrintMessage("THE WORD IS");
-				PrintMessage(wordToGuess,false);
+				PrintMessage("THE WORD IS",true,true,7);
+				PrintMessage(wordToGuess,false,true,15);
 				PrintEnter();
-				cout << "Press Enter to go back Menu";
+				cout << "\t\t\t\t\t\t      Press Enter to go back Menu";
 				getchar();
 		}else if(P1.score > P2.score){
 				system("cls");
@@ -477,10 +533,10 @@ int main(){
 				PrintEnter();
 				PrintWin();
 				PrintEnter();
-				PrintMessage("THE WORD IS");
-				PrintMessage(wordToGuess,false);
+				PrintMessage("THE WORD IS",true,true,7);
+				PrintMessage(wordToGuess,false,true,15);
 				PrintEnter();
-				cout << "Press Enter to go back Menu";
+				cout << "\t\t\t\t\t\t      Press Enter to go back Menu";
 				getchar();
 		}else if(P1.score < P2.score){
 				
@@ -489,10 +545,10 @@ int main(){
 				PrintEnter();
 				PrintWin();
 				PrintEnter();
-				PrintMessage("THE WORD IS");
-				PrintMessage(wordToGuess,false);
+				PrintMessage("THE WORD IS",true,true,7);
+				PrintMessage(wordToGuess,false,true,15);
 				PrintEnter();
-				cout << "Press Enter to go back Menu";
+				cout << "\t\t\t\t\t\t      Press Enter to go back Menu";
 				getchar();
 			
 		}else if(P1.score == P2.score){
@@ -500,10 +556,10 @@ int main(){
 				PrintEnter();
 				PrintDraw();
 				PrintEnter();
-				PrintMessage("THE WORD IS");
-				PrintMessage(wordToGuess);
+				PrintMessage("THE WORD IS",true,true,7);
+				PrintMessage(wordToGuess,false,true,15);
 				PrintEnter();
-				cout << "Press Enter to go back Menu";
+				cout << "\t\t\t\t\t\t      Press Enter to go back Menu";
 				getchar();
 		}
 		}
