@@ -36,14 +36,23 @@ void Color(int i=15){ // set color
    	SetConsoleTextAttribute(hConsole,i);
 }
 
-void Logo(){
+void Logo(){ //Dot Logo
+	cout << endl;
+	Color(15);cout << "\t\t\t\t\t";Color(9);cout << "::::::::::";Color(15);cout << "  ";Color(13);cout << "::::::";Color(15);cout << "  ";Color(11);cout << "::::::";Color(15);cout << " ";Color(10);cout << "::";Color(15);cout << "  ";Color(10);cout << "::::";Color(15);cout << " ";Color(14);cout << "::";Color(15);cout << "    ";Color(14);cout << "::";Color(15);cout << " ";Color(12);cout << "::";Color(15);cout << "      ";Color(12);cout << "::";Color(15);cout << "\n";
+	Color(15);cout << "\t\t\t\t\t    ";Color(9);cout << "::";Color(15);cout << "     ";Color(13);cout << "::";Color(15);cout << "    ";Color(13);cout << "::";Color(15);cout << "   ";Color(11);cout << "::";Color(15);cout << "   ";Color(10);cout << "::";Color(15);cout << " ";Color(10);cout << "::";Color(15);cout << "    ";Color(14);cout << "::";Color(15);cout << "    ";Color(14);cout << "::";Color(15);cout << " ";Color(12);cout << ":::";Color(15);cout << "    ";Color(12);cout << ":::";Color(15);cout << "\n";
+	Color(15);cout << "\t\t\t\t\t    ";Color(9);cout << "::";Color(15);cout << "     ";Color(13);cout << "::::::::";Color(15);cout << "   ";Color(11);cout << "::";Color(15);cout << "   ";Color(10);cout << "::::";Color(15);cout << "     ";Color(14);cout << "::";Color(15);cout << "    ";Color(14);cout << "::";Color(15);cout << " ";Color(12);cout << "::";Color(15);cout << " ";Color(12);cout << ":";Color(15);cout << "  ";Color(12);cout << ":";Color(15);cout << " ";Color(12);cout << "::";Color(15);cout << "\n";
+	Color(15);cout << "\t\t\t\t\t    ";Color(9);cout << "::";Color(15);cout << "     ";Color(13);cout << "::";Color(15);cout << "    ";Color(13);cout << "::";Color(15);cout << "   ";Color(11);cout << "::";Color(15);cout << "   ";Color(10);cout << "::";Color(15);cout << " ";Color(10);cout << "::";Color(15);cout << "    ";Color(14);cout << "::";Color(15);cout << "    ";Color(14);cout << "::";Color(15);cout << " ";Color(12);cout << "::";Color(15);cout << "  ";Color(12);cout << "::";Color(15);cout << "  ";Color(12);cout << "::";Color(15);cout << "\n";
+	Color(15);cout << "\t\t\t\t\t    ";Color(9);cout << "::";Color(15);cout << "     ";Color(13);cout << "::";Color(15);cout << "    ";Color(13);cout << "::";Color(15);cout << " ";Color(11);cout << "::::::";Color(15);cout << " ";Color(10);cout << "::";Color(15);cout << "  ";Color(10);cout << "::::";Color(15);cout << "  ";Color(14);cout << "::::::";Color(15);cout << "  ";Color(12);cout << "::";Color(15);cout << "  ";Color(12);cout << "::";Color(15);cout << "  ";Color(12);cout << "::";Color(15);cout << "\n\n";
+}
+
+/*void Logo(){ //Logo
 	cout << endl;
 	Color(15);cout << "\t\t\t\t\t";Color(153);cout << "::::::::::";Color(15);cout << "  ";Color(221);cout << "::::::";Color(15);cout << "  ";Color(187);cout << "::::::";Color(15);cout << " ";Color(238);cout << "::";Color(15);cout << "  ";Color(238);cout << "::::";Color(15);cout << " ";Color(170);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << " ";Color(204);cout << "::";Color(15);cout << "      ";Color(204);cout << "::";Color(15);cout << "\n";
 	Color(15);cout << "\t\t\t\t\t    ";Color(153);cout << "::";Color(15);cout << "     ";Color(221);cout << "::";Color(15);cout << "    ";Color(221);cout << "::";Color(15);cout << "   ";Color(187);cout << "::";Color(15);cout << "   ";Color(238);cout << "::";Color(15);cout << " ";Color(238);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << " ";Color(204);cout << ":::";Color(15);cout << "    ";Color(204);cout << ":::";Color(15);cout << "\n";
 	Color(15);cout << "\t\t\t\t\t    ";Color(153);cout << "::";Color(15);cout << "     ";Color(221);cout << "::::::::";Color(15);cout << "   ";Color(187);cout << "::";Color(15);cout << "   ";Color(238);cout << "::::";Color(15);cout << "     ";Color(170);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << " ";Color(204);cout << "::";Color(15);cout << " ";Color(204);cout << ":";Color(15);cout << "  ";Color(204);cout << ":";Color(15);cout << " ";Color(204);cout << "::";Color(15);cout << "\n";
 	Color(15);cout << "\t\t\t\t\t    ";Color(153);cout << "::";Color(15);cout << "     ";Color(221);cout << "::";Color(15);cout << "    ";Color(221);cout << "::";Color(15);cout << "   ";Color(187);cout << "::";Color(15);cout << "   ";Color(238);cout << "::";Color(15);cout << " ";Color(238);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << "    ";Color(170);cout << "::";Color(15);cout << " ";Color(204);cout << "::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "\n";
 	Color(15);cout << "\t\t\t\t\t    ";Color(153);cout << "::";Color(15);cout << "     ";Color(221);cout << "::";Color(15);cout << "    ";Color(221);cout << "::";Color(15);cout << " ";Color(187);cout << "::::::";Color(15);cout << " ";Color(238);cout << "::";Color(15);cout << "  ";Color(238);cout << "::::";Color(15);cout << "  ";Color(170);cout << "::::::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "  ";Color(204);cout << "::";Color(15);cout << "\n\n";
-}
+}*/
 
 void PrintOver(){ // print if you lose
 	Color(4);
@@ -51,7 +60,25 @@ void PrintOver(){ // print if you lose
 	cout << "\t\t\t\t  ::   ... ::    :: :::    ::: ::....  ::    ::  ::  ::  ::.... ::...:"<<"\n";
 	Color(12);
 	cout << "\t\t\t\t  ::    :: :::::::: :: :  : :: ::      ::    ::   ::::   ::     ::::  "<<"\n";
-	cout << "\t\t\t\t  :::::::: ::    :: ::  ::  :: ::::::  ::::::::    ::    :::::: :: :::"<<"\n";
+	cout << "\t\t\t\t  :::::::: ::    :: ::  ::  :: ::::::  ::::::::    ::    :::::: :: :::"<<"\n\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "  "; Color(240); cout << " X X "; Color(68); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(240); cout << "  M  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t          "; Color(32); cout << "---\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(17); cout << "  "; Color(17); cout << "     "; Color(17); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(17); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(17); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(136); cout << "     "; Color(255); cout << "  \n"; 	
+	
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(68); cout << "   "; Color(0); cout << " "; Color(68); cout << "   ";
 	}
 
 void PrintWin(){ // print if you win
@@ -61,6 +88,23 @@ void PrintWin(){ // print if you win
 	Color(11);
 	cout << "\t\t\t\t\t             :::   :::     ::    ::  : ::"<<"\n";
 	cout << "\t\t\t\t\t              ::   ::   :::::::: ::   :::"<<"\n";
+		Color(0); cout << "\n";
+		Color(0); cout << "\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(240); cout << " ^ ^ "; Color(255); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(240); cout << "    U    \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(0); cout << "  "; Color(255); cout << " "; Color(0); cout << "  "; Color(255); cout << "  \n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(17); cout << "  "; Color(17); cout << "     "; Color(17); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(0); cout << "  "; Color(17); cout << "     "; Color(0); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(0); cout << "  "; Color(17); cout << "     "; Color(0); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(0); cout << "  "; Color(136); cout << "     "; Color(0); cout << "  \n"; 	
+	
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(68); cout << "   "; Color(0); cout << " "; Color(68); cout << "   ";
 }
 
 void PrintDraw(){ // print if your friend and you draw
@@ -76,11 +120,11 @@ void PrintScore(int &score){ // function print score
 	cout  << score<<"\n";
 }
 
-void PrintEnter(){
+void PrintEnter(){ //function print enter
 	cout  <<"\n\n\n\n";
 }
 
-void PrintMessage(string message, bool printTop = true, bool printBottom = true,int Col=15){
+void PrintMessage(string message, bool printTop = true, bool printBottom = true,int Col=15){ //function print message in box
 	
 	if(printTop){
 		Color(14);
@@ -111,7 +155,7 @@ void PrintMessage(string message, bool printTop = true, bool printBottom = true,
 	}
 }
 
-void PrintLetters(string input, char from, char to){
+void PrintLetters(string input, char from, char to){ //function find letter that used
 	string s;
 	for (char i = from; i <= to; i++)
 	{
@@ -122,58 +166,165 @@ void PrintLetters(string input, char from, char to){
 			s += " ";
 		}	
 	}
-	PrintMessage(s, false,true,8);
+	PrintMessage(s, false,true,13);
 }
 
-void PrintAvailableLetters(string taken){
+void PrintAvailableLetters(string taken){ // function print letter that uesd
 	PrintMessage("Used Letter",false);
 	PrintLetters(taken, 'A', 'Z');
 }
 
-void DrawHangman(int guessCount = 0){
-	if (guessCount >= 1)
-		PrintMessage("|", false, false);
-	else
-		PrintMessage("", false, false);
-
-	if (guessCount >= 2)
-		PrintMessage("|", false, false);
-	else
-		PrintMessage("", false, false);
-
-	if (guessCount >= 3)
-		PrintMessage("O", false, false);
-	else
-		PrintMessage("", false, false);
-
-	if (guessCount == 4)
-		PrintMessage("/  ", false, false);
+void DrawHangman(int guessCount = 0){ //draw hangman
+	if (guessCount == 1){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(32); cout << " / / \n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(32); cout << "/"; Color(0); cout << "     "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(32); cout << "/"; Color(0); cout << "     "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(32); cout << " / / \n";
+		cout << "\n\n\n\n\n\n\n\n\n\n\n";
+	}
+		
+	else if (guessCount == 2){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(32); cout << " / / \n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(32); cout << "/"; Color(0); cout << "     "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(32); cout << "/"; Color(0); cout << "     "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(32); cout << " / / \n";
+		cout << "\n\n\n\n\n\n\n\n\n\n\n";
+	}
 	
-	if (guessCount == 5)
-		PrintMessage("/| ", false, false);
+	else if (guessCount == 3){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "  "; Color(240); cout << " @ @ "; Color(68); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(240); cout << "  U  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t           "; Color(255); cout << " \n";
+		cout << "\n\n\n\n\n\n\n\n\n";
+	}
+	else if (guessCount == 4){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "  "; Color(240); cout << " @ @ "; Color(68); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(240); cout << "  U  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t           "; Color(255); cout << " \n";
 
-	if (guessCount >= 6)
-		PrintMessage("/|\\", false, false);
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(255); cout << "     \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(255); cout << "     \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(255); cout << "     \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(221); cout << "     \n";
+		cout << "\n\n\n\n\n";
+	}
+	
+	else if (guessCount == 5){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "  "; Color(240); cout << " @ @ "; Color(68); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(240); cout << "  U  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t           "; Color(255); cout << " \n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(221); cout << "     \n";
+		cout << "\n\n\n\n\n";
+	}
+	else if (guessCount == 6){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "  "; Color(240); cout << " @ @ "; Color(68); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(240); cout << "  U  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t           "; Color(255); cout << " \n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(221); cout << "     "; Color(255); cout << "  \n"; 
+		cout << "\n\n\n\n\n";
+	}
+	else if (guessCount == 7){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "  "; Color(240); cout << " @ @ "; Color(68); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(240); cout << "  U  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t           "; Color(255); cout << " \n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(255); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(221); cout << "     "; Color(255); cout << "  \n"; 
+	
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(221); cout << "  "; Color(0); cout << " "; Color(221); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(255); cout << "  "; Color(0); cout << " "; Color(255); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(255); cout << "  "; Color(0); cout << " "; Color(255); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(255); cout << "   "; Color(0); cout << " "; Color(255); cout << "   \n";
+		cout << "\n";
+	}
+	else  if (guessCount == 8){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "  "; Color(240); cout << " @ @ "; Color(68); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(240); cout << "  U  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t           "; Color(255); cout << " \n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(17); cout << "  "; Color(17); cout << "     "; Color(17); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(17); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(17); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(221); cout << "     "; Color(255); cout << "  \n"; 	
+		
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(221); cout << "  "; Color(0); cout << " "; Color(221); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(255); cout << "  "; Color(0); cout << " "; Color(255); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(255); cout << "  "; Color(0); cout << " "; Color(255); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(255); cout << "   "; Color(0); cout << " "; Color(255); cout << "   \n";
+		cout << "\n";
+	}
+
+	else if (guessCount >= 9){
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		Color(0); cout << "\t\t\t\t\t\t\t\t   "; Color(32); cout << "/\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t\t"; Color(68); cout << "       \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "   "; Color(255); cout << "   "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(68); cout << "  "; Color(240); cout << " O O "; Color(68); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(240); cout << "  A  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t          "; Color(32); cout << "---\n";
+		
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(17); cout << "  "; Color(17); cout << "     "; Color(17); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(17); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(17); cout << "     "; Color(255); cout << "  \n"; 
+		Color(0); cout << "\t\t\t\t\t\t\t       "; Color(255); cout << "  "; Color(136); cout << "     "; Color(255); cout << "  \n"; 	
+	
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(68); cout << "   "; Color(0); cout << " "; Color(68); cout << "   \n";
+	}
 	else
-		PrintMessage("", false, false);
-
-	if (guessCount >= 7)
-		PrintMessage("|", false, false);
-	else
-		PrintMessage("", false, false);
-
-	if (guessCount == 8)
-		PrintMessage("/", false, false);
-
-	if (guessCount >= 9)
-		PrintMessage("/ \\", false, false);
-	else
-		PrintMessage("", false, false);
+		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+		
 }
 
 
 
-bool PrintWordAndCheckWin(string word, string guessed){
+bool PrintWordAndCheckWin(string word, string guessed){ //show the answer and check win
 	bool won = true;
 	string s;
 	for (int i = 0; i < word.length(); i++){
@@ -196,7 +347,7 @@ bool PrintWordAndCheckWin(string word, string guessed){
 	return won;
 }
 
-string LoadRandomWord(string path){
+string LoadRandomWord(string path){ //random word
 	int lineCount = 0;
 	string word;
 	
@@ -218,7 +369,7 @@ string LoadRandomWord(string path){
 	return word;
 }
 
-int TriesLeft(string word, string guessed){
+int TriesLeft(string word, string guessed){ 
 	int error = 0;
 	for (int i = 0; i < guessed.length(); i++)
 	{
@@ -228,7 +379,7 @@ int TriesLeft(string word, string guessed){
 	return error;
 }
 
-int score(string word, string guessed){
+int score(string word, string guessed){ //show score
 	int score = 0;
 	for (int i = 0; i < word.length(); i++)
 	{
@@ -256,12 +407,14 @@ int main(){
 		Logo();
 		int c = 0;
 		PrintMessage("Press a number to select option.");
-		cout << "\n";	
-		cout << "\t\t\t\t\t\t       |    1 for One Player.   |" << endl;
-		cout << "\t\t\t\t\t\t       |    2 for Two Player.   |" << endl;
-		cout << "\t\t\t\t\t\t       |    3 Exit.             |" << endl;
+		cout << "\n";
+		Color(9);	
+		cout << "\t\t\t\t\t\t       |    "; Color(15); cout << "1 for One Player."; Color(9); cout << "   |" << endl;
+		cout << "\t\t\t\t\t\t       |    "; Color(15); cout << "2 for Two Player."; Color(9); cout << "   |" << endl;
+		cout << "\t\t\t\t\t\t       |    "; Color(15); cout << "3 Exit."; Color(9); cout << "             |" << endl;
 		
 		cout << "\n";
+		Color(14);
 		cout << "\t\t\t\t   ================================================================="<<"\n";
 		Color(12);
 		cout << "\n\t\t\t\t\t\t\t  >> ";
@@ -373,7 +526,7 @@ int main(){
 			    PrintMessage(mode,true,false);
 				sprintf(t,"%d",P.score);
 				PrintMessage("Score",true,false);
-				PrintMessage(t,false);
+				PrintMessage(t,false,true,11);
 				DrawHangman(P.tries);
 				PrintMessage("GUESS THE WORD");
 				P.win = PrintWordAndCheckWin(wordToGuess,P.guesses);
@@ -450,9 +603,9 @@ int main(){
 					PrintMessage(mode,true,false);
 					sprintf(t1,"%d",P1.score);
 					PrintMessage("Score",true,false);
-					PrintMessage(t1,false);
+					PrintMessage(t1,false,true,11);
 					DrawHangman(P1.tries);
-					PrintMessage("1");
+					PrintMessage("Player 1");
 					
 					
 					P1.win = PrintWordAndCheckWin(wordToGuess,P1.guesses);
@@ -491,9 +644,9 @@ int main(){
 					PrintMessage(mode,true,false);
 					sprintf(t2,"%d",P2.score);
 					PrintMessage("Score",false);
-					PrintMessage(t2,false);
+					PrintMessage(t2,false,true,11);
 					DrawHangman(P2.tries);
-					PrintMessage("2");
+					PrintMessage("Player 2");
 					P2.win = PrintWordAndCheckWin(wordToGuess,P2.guesses);
 					P2turn++;
 					if(P2turn%2==0){
