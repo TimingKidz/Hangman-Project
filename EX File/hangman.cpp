@@ -191,7 +191,7 @@ void DrawHangman(int guessCount = 0){ //draw hangman
 		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(32); cout << "/"; Color(0); cout << "     "; Color(32); cout << "/\n";
 		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(32); cout << "/"; Color(0); cout << "     "; Color(32); cout << "/\n";
 		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(32); cout << " / / \n";
-		cout << "\n\n\n\n\n\n\n\n\n\n\n";
+		cout << "\n\n\n\n\n\n\n\n\n\n";
 	}
 	
 	else if (guessCount == 3){
@@ -315,7 +315,7 @@ void DrawHangman(int guessCount = 0){ //draw hangman
 		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
 		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
 		Color(0); cout << "\t\t\t\t\t\t\t         "; Color(136); cout << "  "; Color(0); cout << " "; Color(136); cout << "  \n";
-		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(68); cout << "   "; Color(0); cout << " "; Color(68); cout << "   \n";
+		Color(0); cout << "\t\t\t\t\t\t\t        "; Color(68); cout << "   "; Color(0); cout << " "; Color(68); cout << "   \n\n";
 	}
 	else
 		cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
